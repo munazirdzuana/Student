@@ -30,14 +30,15 @@ public class StudentWebController {
         return "formStudent";
     }
 
+
     @PostMapping(value = "/create")
-    public String tambahStudent(@Valid Model model, Student student, Errors error) {
-        if(null != error && error.getErrorCount()>0){
-            return "index";
+    public String tambahStudent(@Valid Model model, Student student, Errors errors) {
+        if(null != errors && errors.getErrorCount()>0){
+            return "formStudent";
         }
         else {
             model.addAttribute("student",studentService.save(student));
-            model.addAttribute("succes","berhasil disimpan");
+            model.addAttribute("success","berhasil disimpan");
             return "succes";
         }
     }
