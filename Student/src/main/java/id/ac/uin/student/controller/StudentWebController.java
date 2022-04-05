@@ -1,11 +1,13 @@
 package id.ac.uin.student.controller;
 
 import id.ac.uin.student.entity.Student;
+import id.ac.uin.student.exception.StudentNotFoundException;
 import id.ac.uin.student.service.StudenServices;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,14 +33,13 @@ public class StudentWebController {
     }
 
 
-    @PostMapping(value = "/create")
-    public String tambahStudent(@Valid Model model, Student student, Errors errors) {
-        if(null != errors && errors.getErrorCount()>0){
+    @PostMapping("/save")
+    public String submitStudentDetails(@Valid Student student, Errors errors, Model model) {
+        if (null != errors && errors.getErrorCount() > 0) {
             return "formStudent";
-        }
-        else {
+        } else {
             model.addAttribute("student",studentService.save(student));
-            model.addAttribute("success","berhasil disimpan");
+            model.addAttribute("success", "Details saved successfully!!");
             return "succes";
         }
     }

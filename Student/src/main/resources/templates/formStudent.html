@@ -1,3 +1,4 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -18,58 +19,41 @@
     <div class="row">
         <div class="col-sm-8">
             <form class="form-horizontal" method="post"
-                  th:action="@{/create}" th:object="${student}">
+                  th:action="@{/save}" th:object="${student}">
                 <input th:field="*{id}" type="hidden"/>
 
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">Nama Depan:</label>
-                    <div class="col-sm-8">
-                        <input class="form-control" th:field="*{firstName}" type="text" id="firstName" placeholder="Nama Depan" required>
-                        <p class="alert alert-danger" th:errors="*{firstName}" th:if="${#fields.hasErrors('firstName')}">
-                    </div>
+                    <label for="firstName">First Name :</label>
+                    <input class="form-control" id="firstName" th:field="*{firstName}" type="text">
+                    <p class="alert alert-danger" th:errors="*{firstName}" th:if="${#fields.hasErrors('firstName')}">
                 </div>
-
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">Nama Belakang:</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" th:field="*{lastName}" type="text" id="lastName" placeholder="Nama Belakang" required>
-                        <p class="alert alert-danger" th:errors="*{lastName}" th:if="${#fields.hasErrors('lastName')}">
-                    </div>
+                    <label for="lastName">Last Name :</label>
+                    <input class="form-control" id="lastName" th:field="*{lastName}" type="text">
+                    <p class="alert alert-danger" th:errors="*{lastName}" th:if="${#fields.hasErrors('lastName')}">
                 </div>
-
                 <div class="form-group">
                     <label for="bd">Birth Date:</label>
                     <input class="form-control" id="bd" th:field="*{birthDay}" type="date"/>
                     <p class="alert alert-danger" th:errors="*{birthDay}" th:if="${#fields.hasErrors('birthDay')}"/>
                 </div>
-
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Email:</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" th:field="*{email}" type="text" id="email" placeholder="Email" required>
-                        <p class="alert alert-danger" th:errors="*{email}" th:if="${#fields.hasErrors('email')}">
-                    </div>
+                    <label for="phone">Phone Number:</label>
+                    <input class="form-control" id="phone" th:field="*{phoneNumber}" type="number"/>
+                    <p class="alert alert-danger" th:errors="*{phoneNumber}" th:if="${#fields.hasErrors('phoneNumber')}"/>
                 </div>
-
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Phone:</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" th:field="*{phoneNumber}" type="text" id="phoneNumber" placeholder="Nomor telepon" required>
-                        <p class="alert alert-danger" th:errors="*{phoneNumber}" th:if="${#fields.hasErrors('phoneNumber')}">
-                    </div>
+                    <label for="email">Email:</label>
+                    <input class="form-control" id="email" th:field="*{email}" type="text">
+                    <p class="alert alert-danger" th:errors="*{email}" th:if="${#fields.hasErrors('email')}">
                 </div>
-
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Jurusan:</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" th:field="*{jurusan}" type="text" id="jurusan" placeholder="Nomor Jurusan" required>
-                        <p class="alert alert-danger" th:errors="*{jurusan}" th:if="${#fields.hasErrors('jurusan')}">
-                    </div>
+                    <label for="jurusan">Jurusan:</label>
+                    <input class="form-control" id="jurusan" th:field="*{jurusan}" type="text">
+                    <p class="alert alert-danger" th:errors="*{jurusan}" th:if="${#fields.hasErrors('jurusan')}">
                 </div>
-
                 <div class="form-group">
-                    <input class="btn btn-success" type="submit" value="Save">
-                    <a class="btn btn-danger" role="button" th:href="@{/}">Kembali</a>
+                    <button class="btn btn-primary" type="submit">Submit</button>
                 </div>
 
 
